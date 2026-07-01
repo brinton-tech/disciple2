@@ -84,7 +84,7 @@ header.site{
 }
 .navbar{
   display:flex;align-items:center;justify-content:space-between;
-  padding:12px 32px;max-width:var(--max);margin:0 auto;
+  padding:1px 10px;max-width:var(--max);margin:0 auto;
   text-decoration: none;
 }
 .brand{display:flex;align-items:center;gap:12px;}

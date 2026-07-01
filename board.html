@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Board Members — Discipleship Mission</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ---- Board page extras ---- */
+  .board-hero{
+    background:
+      radial-gradient(ellipse at top right, rgba(199,168,87,.15), transparent 55%),
+      var(--navy);
+    color:var(--cream);
+    padding:90px 0 70px;
+    text-align:center;
+  }
+  .board-hero .eyebrow{color:var(--gold);justify-content:center;}
+  .board-hero h1{color:#fff;max-width:18ch;margin:0 auto 18px;}
+  .board-hero p{color:rgba(250,247,240,.8);max-width:58ch;margin:0 auto;}
+
+  /* ---- Board member card ---- */
+  .board-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  @media(max-width:960px){.board-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:580px){.board-grid{grid-template-columns:1fr;}}
+
+  .board-card{
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(15,44,62,.07);
+    box-shadow:0 6px 24px rgba(15,44,62,.06);
+    transition:transform .2s, box-shadow .2s;
+    display:flex;flex-direction:column;
+  }
+  .board-card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(15,44,62,.12);}
+
+  .board-photo{
+    position:relative;
+    aspect-ratio:1/1;
+    overflow:hidden;
+  }
+  .board-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .4s;}
+  .board-card:hover .board-photo img{transform:scale(1.04);}
+  .board-photo .role-badge{
+    position:absolute;bottom:12px;left:12px;
+    background:rgba(10,31,44,.84);
+    backdrop-filter:blur(4px);
+    color:var(--gold);
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;
+    padding:5px 12px;border-radius:20px;
+  }
+
+  .board-body{
+    padding:22px 22px 26px;
+    flex:1;display:flex;flex-direction:column;
+  }
+  .board-body h3{font-size:1.15rem;margin-bottom:4px;color:var(--navy);}
+  .board-body .dept{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--olive);margin-bottom:12px;
+  }
+  .board-body p{color:var(--ink-soft);font-size:.88rem;margin:0;line-height:1.55;flex:1;}
+  .board-body .contact-row{
+    display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;
+  }
+  .board-body .contact-row a{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:.78rem;font-weight:600;color:var(--navy);
+    padding:6px 12px;border-radius:20px;background:var(--cream2);
+    transition:background .15s;
+  }
+  .board-body .contact-row a:hover{background:var(--olive-pale);}
+
+  /* ---- Section dividers ---- */
+  .board-section{padding:70px 0;}
+  .board-section-label{
+    display:flex;align-items:center;gap:16px;margin-bottom:36px;
+  }
+  .board-section-label .line{flex:1;height:1px;background:rgba(15,44,62,.1);}
+  .board-section-label span{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--olive);white-space:nowrap;
+  }
+
+  /* ---- Featured leadership (founders at top, bigger) ---- */
+  .leadership-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+    max-width:780px;
+    margin:0 auto;
+  }
+  @media(max-width:640px){.leadership-grid{grid-template-columns:1fr;}}
+  .leadership-card{
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(15,44,62,.07);
+    box-shadow:0 8px 30px rgba(15,44,62,.08);
+    transition:transform .2s, box-shadow .2s;
+  }
+  .leadership-card:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(15,44,62,.13);}
+  .leadership-photo{position:relative;aspect-ratio:3/3.2;overflow:hidden;}
+  .leadership-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;}
+  .leadership-photo .overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,31,44,.8) 0%,transparent 55%);}
+  .leadership-photo .plate{position:absolute;bottom:0;left:0;right:0;padding:20px;}
+  .leadership-photo .plate .lbl{font-family:var(--display);font-style:italic;color:var(--gold);font-size:.85rem;display:block;margin-bottom:2px;}
+  .leadership-photo .plate h3{color:#fff;margin:0;font-size:1.25rem;}
+  .leadership-body{padding:20px 22px 24px;}
+  .leadership-body .role-tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--olive);display:block;margin-bottom:10px;}
+  .leadership-body p{color:var(--ink-soft);font-size:.88rem;margin:0;}
+  .leadership-body blockquote{font-family:var(--display);font-style:italic;color:var(--navy);font-size:.92rem;border-left:3px solid var(--gold);padding-left:12px;margin:14px 0 0;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="navbar">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.jpeg" alt="Discipleship Mission logo">
+      <span class="name">Discipleship Mission<small>Disciple · Develop · Deploy</small></span>
+    </a>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="founders.html">Founders</a></li>
+      <li><a href="training.html">Training</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="board.html" class="active">Board</a></li>
+      <li><a href="tv.html">DM TV</a></li>
+      <li><a href="partnership.html">Partnership</a></li>
+      <li><a href="donate.html">Donate</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="donate.html" class="nav-cta">Support the Mission</a>
+    <button class="navtoggle" id="navtoggle" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0F2C3E" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="board-hero">
+  <div class="wrap">
+    <span class="eyebrow">Board &amp; Stakeholders</span>
+    <h1>The people behind the mission</h1>
+    <p>Discipleship Mission is led by a team of servants — founders, directors, coordinators, and partners — each carrying a piece of the vision to equip small churches and send disciples to grow.</p>
+  </div>
+</section>
+
+<!-- ===== FOUNDING LEADERSHIP ===== -->
+<section class="board-section">
+  <div class="wrap">
+    <div class="board-section-label">
+      <div class="line"></div><span>Founding Leadership</span><div class="line"></div>
+    </div>
+    <div class="leadership-grid">
+
+      <div class="leadership-card">
+        <div class="leadership-photo">
+          <img src="assets/22.PNG" alt="Pastor Nzanzu Muviswa Aggelos">
+          <div class="overlay"></div>
+          <div class="plate">
+            <span class="lbl">Pastor &amp; Co-Founder</span>
+            <h3>Nzanzu Muviswa Aggelos</h3>
+          </div>
+        </div>
+        <div class="leadership-body">
+          <span class="role-tag">Executive Director</span>
+          <p>Pastor Aggelos is the visionary co-founder of Discipleship Mission. He holds an undergraduate degree in Theology from Africa International University, Nairobi, and is currently pursuing a Master's in Biblical Studies. Married to Dorcas Kalepa, father of ElSali.</p>
+          <blockquote>My heart beats for Christ, for His Church, and for every soul He calls us to disciple.</blockquote>
+        </div>
+      </div>
+
+      <div class="leadership-card">
+        <div class="leadership-photo">
+          <img src="assets/25.PNG" alt="Pastor Katembo Emery Kuhimba">
+          <div class="overlay"></div>
+          <div class="plate">
+            <span class="lbl">Pastor &amp; Co-Founder</span>
+            <h3>Katembo Emery Kuhimba</h3>
+          </div>
+        </div>
+        <div class="leadership-body">
+          <span class="role-tag">Ministry Director</span>
+          <p>Pastor Emery co-founded Discipleship Mission with a heart for seeing small churches transformed. He holds a Diploma from Pwani Bible College, Mombasa. Married to Dorcas Kavira, father of Louange and Abdias.</p>
+          <blockquote>We live to honor Christ and build His Kingdom together as one family in ministry.</blockquote>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOARD OF DIRECTORS ===== -->
+<section class="board-section" style="padding-top:0;background:var(--olive-pale);">
+  <div class="wrap">
+    <div class="board-section-label">
+      <div class="line"></div><span>Board of Directors</span><div class="line"></div>
+    </div>
+    <div class="board-grid">
+
+      <div class="board-card">
+        <div class="board-photo">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=500&auto=format&fit=crop" alt="Board member">
+          <span class="role-badge">Chairperson</span>
+        </div>
+        <div class="board-body">
+          <h3>Board Chairperson</h3>
+          <p class="dept">Governance &amp; Oversight</p>
+          <p>Provides strategic oversight and accountability for the ministry's vision, finances, and direction. Ensures Discipleship Mission remains true to its biblical mandate.</p>
+          <div class="contact-row"><a href="contact.html">✉ Contact</a></div>
+        </div>
+      </div>
+
+      <div class="board-card">
+        <div class="board-photo">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=500&auto=format&fit=crop" alt="Board member">
+          <span class="role-badge">Secretary</span>
+        </div>
+        <div class="board-body">
+          <h3>Kavira Dorcas</h3>
+          <p class="dept">Board Secretary</p>
+          <p>Handles all official correspondence, maintains board meeting records, and ensures smooth administrative operations across the organisation.</p>
+          <div class="contact-row"><a href="contact.html">✉ Contact</a></div>
+        </div>
+      </div>
+
+      <div class="board-card">
+        <div class="board-photo">
+          <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=500&auto=format&fit=crop" alt="Board member">
+          <span class="role-badge">HR / Treasurer</span>
+        </div>
+        <div class="board-body">
+          <h3>Dorcas Kalepa Tabitha</h3>
+          <p class="dept">HR Officer &amp; Treasurer</p>
+          <p>Manages human resources, staff welfare, and the financial stewardship of all ministry funds — ensuring accountability and transparency in every transaction.</p>
+          <div class="contact-row"><a href="contact.html">✉ Contact</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== MINISTRY TEAM ===== -->
+<section class="board-section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="board-section-label">
+      <div class="line"></div><span>Ministry Team</span><div class="line"></div>
+    </div>
+    <div class="board-grid">
+
+      <div class="board-card">
+        <div class="board-photo">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=500&auto=format&fit=crop" alt="Ministry team member">
+          <span class="role-badge">Regional Coord.</span>
+        </div>
+        <div class="board-body">
+          <h3>Muhindo Bienfait Muviswa</h3>
+          <p class="dept">Regional Coordinator</p>
+          <p>Oversees relationships with partner churches across the region — liaising between local church leaders and the Discipleship Mission team to ensure cohorts run well.</p>
+          <div class="contact-row"><a href="contact.html">✉ Contact</a></div>
+        </div>
+      </div>
+
+      <div class="board-card">
+        <div class="board-photo">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=500&auto=format&fit=crop" alt="Ministry team member">
+          <span class="role-badge">Media</span>
+        </div>
+        <div class="board-body">
+          <h3>Nzanzu Kataka Biche</h3>
+          <p class="dept">Media Team Coordinator</p>
+          <p>Leads the production, editing, and distribution of all Discipleship Mission media content — from DM TV episodes to social media and outreach campaigns.</p>
+          <div class="contact-row"><a href="contact.html">✉ Contact</a></div>
+        </div>
+      </div>
+
+      <div class="board-card">
+        <div class="board-photo">
+          <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=500&auto=format&fit=crop" alt="Ministry team member">
+          <span class="role-badge">Training Lead</span>
+        </div>
+        <div class="board-body">
+          <h3>Training Programme Lead</h3>
+          <p class="dept">Discipleship &amp; Curriculum</p>
+          <p>Coordinates the delivery of Modules 1–4 across all partner churches — training mentors, reviewing disciple progress, and updating curriculum materials.</p>
+          <div class="contact-row"><a href="contact.html">✉ Contact</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== MINISTRY PARTNERS ===== -->
+<section class="board-section" style="padding-top:0;background:var(--navy);">
+  <div class="wrap">
+    <div class="board-section-label" style="margin-bottom:32px;">
+      <div class="line" style="background:rgba(250,247,240,.15);"></div>
+      <span style="color:var(--gold);">Ministry Partners &amp; Advisors</span>
+      <div class="line" style="background:rgba(250,247,240,.15);"></div>
+    </div>
+    <div class="board-grid">
+
+      <div class="board-card" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);">
+        <div class="board-photo">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=500&auto=format&fit=crop" alt="Partner advisor">
+          <span class="role-badge">Partner · USA</span>
+        </div>
+        <div class="board-body">
+          <h3 style="color:#fff;">Pastor Brian Anderson</h3>
+          <p class="dept">Lead Pastor, The Bridge Church</p>
+          <p style="color:rgba(250,247,240,.72);">Based in Rancho Cordova, Northern California. Author of the training material used in our Leader Guides. A foundational partner in shaping our discipleship curriculum.</p>
+        </div>
+      </div>
+
+      <div class="board-card" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);">
+        <div class="board-photo">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=500&auto=format&fit=crop" alt="Partner advisor">
+          <span class="role-badge">Partner · Romania</span>
+        </div>
+        <div class="board-body">
+          <h3 style="color:#fff;">Pastor Raul</h3>
+          <p class="dept">Biblical Studies Partner</p>
+          <p style="color:rgba(250,247,240,.72);">Our dear brother from Romania, providing invaluable input into the Bible study materials being used across our training cohorts.</p>
+        </div>
+      </div>
+
+      <div class="board-card" style="background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;min-height:260px;text-align:center;padding:30px;">
+        <div>
+          <div style="font-size:2rem;margin-bottom:14px;">🤝</div>
+          <h3 style="color:#fff;font-size:1.05rem;">Become a stakeholder partner</h3>
+          <p style="color:rgba(250,247,240,.65);font-size:.88rem;margin:8px 0 18px;">Churches, organisations, and individuals can partner with Discipleship Mission to co-labour in the Great Commission.</p>
+          <a href="contact.html" class="btn btn-gold" style="font-size:.82rem;padding:9px 18px;">Get in touch →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:70px 0;">
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h2>Want to be part of the story?</h2>
+        <p>We are always looking for godly, gifted people to serve on our team and as partners.</p>
+      </div>
+      <a href="contact.html" class="btn btn-light">Contact us →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><img src="assets/logo.jpeg" alt="Discipleship Mission logo"><strong>Discipleship Mission</strong></div>
+        <p style="max-width:32ch;font-size:.88rem;">Equipping Small Churches. Sending Them to Grow.</p>
+        <p class="footer-verse">"Go therefore and make disciples of all nations..." — Matthew 28:19</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="founders.html">Founders</a></li>
+          <li><a href="board.html">Board Members</a></li>
+          <li><a href="training.html">Training Program</a></li>
+          <li><a href="music.html">Music Department</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get involved</h4>
+        <ul>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="partnership.html">Partner your church</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow us</h4>
+        <ul><li>Facebook</li><li>YouTube</li><li>Instagram</li><li>WhatsApp</li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Discipleship Mission. All rights reserved.</span>
+      <span>Equip Small Churches. Send Them To Grow.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('navtoggle').addEventListener('click',()=>document.getElementById('navlinks').classList.toggle('open'));
+</script>
+</body>
+</html>

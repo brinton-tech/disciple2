@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Music Department — Discipleship Mission</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ---- Music page extras ---- */
+  .music-hero{
+    background:
+      radial-gradient(ellipse at top right, rgba(199,168,87,.15), transparent 55%),
+      radial-gradient(ellipse at bottom left, rgba(85,100,57,.12), transparent 50%),
+      var(--cream);
+    padding:80px 0 50px;
+  }
+  .music-hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;}
+  @media(max-width:880px){.music-hero-grid{grid-template-columns:1fr;}}
+
+  .music-hero-photo{border-radius:22px;overflow:hidden;aspect-ratio:4/3.6;box-shadow:0 30px 60px -20px rgba(15,44,62,.38);}
+  .music-hero-photo img{width:100%;height:100%;object-fit:cover;}
+
+  .note-icon{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:52px;height:52px;border-radius:14px;background:var(--olive-pale);
+    font-size:1.4rem;margin-bottom:16px;
+  }
+
+  .dept-values{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px;}
+  @media(max-width:760px){.dept-values{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.dept-values{grid-template-columns:1fr;}}
+
+  .dept-val-card{background:#fff;border-radius:16px;padding:26px 22px;border:1px solid rgba(15,44,62,.07);text-align:center;}
+  .dept-val-card .ico{font-size:1.8rem;display:block;margin-bottom:12px;}
+  .dept-val-card h3{font-size:1.05rem;margin-bottom:8px;}
+  .dept-val-card p{color:var(--ink-soft);font-size:.88rem;margin:0;}
+
+  .ensemble-band{background:var(--navy);color:var(--cream);padding:80px 0;}
+  .ensemble-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px;}
+  @media(max-width:900px){.ensemble-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.ensemble-grid{grid-template-columns:1fr;}}
+  .ensemble-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;transition:background .2s;}
+  .ensemble-card:hover{background:rgba(255,255,255,.12);}
+  .ensemble-card .e-photo{aspect-ratio:1/1;overflow:hidden;}
+  .ensemble-card .e-photo img{width:100%;height:100%;object-fit:cover;}
+  .ensemble-card .e-body{padding:18px 16px;}
+  .ensemble-card h3{color:#fff;font-size:1rem;margin-bottom:4px;}
+  .ensemble-card span{color:rgba(250,247,240,.65);font-size:.8rem;}
+
+  .ministry-pillars{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:44px;}
+  @media(max-width:700px){.ministry-pillars{grid-template-columns:1fr;}}
+  .ministry-pill{background:var(--olive-pale);border-radius:16px;padding:28px;display:flex;gap:16px;align-items:flex-start;}
+  .ministry-pill .ico{width:44px;height:44px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;flex:none;font-size:1.2rem;box-shadow:0 2px 8px rgba(15,44,62,.08);}
+  .ministry-pill h3{margin-bottom:6px;}
+  .ministry-pill p{color:var(--ink-soft);font-size:.9rem;margin:0;}
+
+  .cta-music{
+    background:linear-gradient(120deg, var(--navy), #1a5c4a);
+    border-radius:24px;padding:60px 50px;
+    display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;
+    color:#fff;
+  }
+  .cta-music h2{color:#fff;margin-bottom:6px;}
+  .cta-music p{color:rgba(255,255,255,.85);margin:0;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="navbar">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.jpeg" alt="Discipleship Mission logo">
+      <span class="name">Discipleship Mission<small>Disciple · Develop · Deploy</small></span>
+    </a>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="founders.html">Founders</a></li>
+      <li><a href="training.html">Training</a></li>
+      <li><a href="music.html" class="active">Music</a></li>
+      <li><a href="board.html">Board</a></li>
+      <li><a href="tv.html">DM TV</a></li>
+      <li><a href="partnership.html">Partnership</a></li>
+      <li><a href="donate.html">Donate</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="donate.html" class="nav-cta">Support the Mission</a>
+    <button class="navtoggle" id="navtoggle" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0F2C3E" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="music-hero">
+  <div class="wrap music-hero-grid">
+    <div>
+      <span class="eyebrow">Music Department</span>
+      <h1>Worship that <em>equips</em> and sends.</h1>
+      <p class="lead">The Discipleship Mission Music Department uses God-honouring worship and original music to strengthen the local church, deepen discipleship, and carry the Gospel into communities that words alone cannot reach.</p>
+      <div class="hero-actions" style="margin-top:28px;">
+        <a href="contact.html" class="btn btn-primary">Join the team →</a>
+        <a href="#ministry" class="btn btn-outline">What we do</a>
+      </div>
+    </div>
+    <div class="music-hero-photo">
+      <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=900&auto=format&fit=crop" alt="Worship team leading a congregation">
+    </div>
+  </div>
+</section>
+
+<!-- Vision -->
+<section>
+  <div class="wrap two-col">
+    <div>
+      <span class="eyebrow">Our vision</span>
+      <h2>Music rooted in the Word, offered to God, and shared with the world.</h2>
+      <p style="color:var(--ink-soft);">We believe that music and worship are not decorations to a church service — they are vehicles for teaching, discipleship, lament, and praise. Every song we produce and every team we train is built on that conviction.</p>
+      <p style="color:var(--ink-soft);">Our Music Department works alongside the training programme to create worship that reinforces Scripture, builds up the saints, and draws people who would not otherwise step into a church building.</p>
+    </div>
+    <div class="img-round">
+      <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=900&auto=format&fit=crop" alt="Choir rehearsal in a church hall">
+    </div>
+  </div>
+</section>
+
+<!-- Values -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">What we value</span>
+      <h2>The pillars of our worship culture</h2>
+    </div>
+    <div class="dept-values">
+      <div class="dept-val-card">
+        <span class="ico">✝️</span>
+        <h3>Christ-Centred</h3>
+        <p>Every lyric and melody must exalt Jesus, not the performer or the style.</p>
+      </div>
+      <div class="dept-val-card">
+        <span class="ico">📖</span>
+        <h3>Biblically Grounded</h3>
+        <p>Songs are tested against Scripture before they are sung in any of our churches.</p>
+      </div>
+      <div class="dept-val-card">
+        <span class="ico">🤲</span>
+        <h3>Servant-Hearted</h3>
+        <p>The worship team leads from humility, preparing hearts to hear God's Word.</p>
+      </div>
+      <div class="dept-val-card">
+        <span class="ico">🌍</span>
+        <h3>Mission-Minded</h3>
+        <p>We write and translate worship in local languages to reach every community.</p>
+      </div>
+      <div class="dept-val-card">
+        <span class="ico">🎓</span>
+        <h3>Equipping Others</h3>
+        <p>We train worship leaders in small churches who lack resources for music school.</p>
+      </div>
+      <div class="dept-val-card">
+        <span class="ico">🤝</span>
+        <h3>Unified in Purpose</h3>
+        <p>Music and teaching walk hand in hand — the song prepares the soil; the Word plants the seed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ministry areas -->
+<section id="ministry" style="background:var(--olive-pale);">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Ministry areas</span>
+      <h2>Four ways music serves the mission</h2>
+    </div>
+    <div class="ministry-pillars">
+      <div class="ministry-pill">
+        <div class="ico">🎙️</div>
+        <div>
+          <h3>Congregational Worship Training</h3>
+          <p>Equipping church worship teams with skills, song selection, and devotional depth to lead well every Sunday.</p>
+        </div>
+      </div>
+      <div class="ministry-pill">
+        <div class="ico">🎵</div>
+        <div>
+          <h3>Original Music & Recording</h3>
+          <p>Writing and recording original worship songs rooted in Scripture — available free of charge to partner churches.</p>
+        </div>
+      </div>
+      <div class="ministry-pill">
+        <div class="ico">🌐</div>
+        <div>
+          <h3>Language & Translation Ministry</h3>
+          <p>Translating key worship songs into Swahili, French, and local African languages so every church can sing in its heart language.</p>
+        </div>
+      </div>
+      <div class="ministry-pill">
+        <div class="ico">📺</div>
+        <div>
+          <h3>Music on DM TV</h3>
+          <p>Live worship sessions and teaching on music ministry available through the Discipleship Mission TV platform.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ensemble / team -->
+<section class="ensemble-band">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow" style="color:var(--gold);">The worship team</span>
+      <h2 style="color:#fff;">Gifted servants leading the way</h2>
+      <p class="lead center" style="color:rgba(250,247,240,.78);">Our core worship team is made up of trained musicians, vocalists, and songwriters committed to excellence in God's presence.</p>
+    </div>
+    <div class="ensemble-grid">
+      <div class="ensemble-card">
+        <div class="e-photo"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop" alt="Worship leader portrait"></div>
+        <div class="e-body"><h3>Worship Leader</h3><span>Lead Vocals &amp; Guitar</span></div>
+      </div>
+      <div class="ensemble-card">
+        <div class="e-photo"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=400&auto=format&fit=crop" alt="Vocalist portrait"></div>
+        <div class="e-body"><h3>Lead Vocalist</h3><span>Choir Director</span></div>
+      </div>
+      <div class="ensemble-card">
+        <div class="e-photo"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=400&auto=format&fit=crop" alt="Keyboard player portrait"></div>
+        <div class="e-body"><h3>Keys &amp; Piano</h3><span>Arranger &amp; Producer</span></div>
+      </div>
+      <div class="ensemble-card">
+        <div class="e-photo"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop" alt="Drums player portrait"></div>
+        <div class="e-body"><h3>Percussion</h3><span>Drums &amp; Rhythm</span></div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:32px;color:rgba(250,247,240,.65);font-size:.9rem;">
+      Team photos and bios will be updated as new members join. <a href="contact.html" style="color:var(--gold);">Interested in joining?</a>
+    </p>
+  </div>
+</section>
+
+<!-- Testimonial -->
+<section>
+  <div class="wrap">
+    <div class="quote-block">
+      <div class="quote-photo"><img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?q=80&w=300&auto=format&fit=crop" alt="Founding pastor portrait"></div>
+      <div>
+        <blockquote class="verse">"Worship is not a warm-up to the sermon. It is the sermon — it is the congregation preaching the Word back to God and to one another."</blockquote>
+        <cite>— Discipleship Mission Music Department</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="cta-music">
+      <div>
+        <h2>Ready to grow your church's worship team?</h2>
+        <p>Contact us to receive free training resources and song materials for your church.</p>
+      </div>
+      <a href="contact.html" class="btn btn-light">Get resources →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><img src="assets/logo.jpeg" alt="Discipleship Mission logo"><strong>Discipleship Mission</strong></div>
+        <p style="max-width:32ch;font-size:.88rem;">Equipping Small Churches. Sending Them to Grow.</p>
+        <p class="footer-verse">"Go therefore and make disciples of all nations..." — Matthew 28:19</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="founders.html">Founders</a></li>
+          <li><a href="board.html">Board Members</a></li>
+          <li><a href="training.html">Training Program</a></li>
+          <li><a href="music.html">Music Department</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get involved</h4>
+        <ul>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="partnership.html">Partner your church</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow us</h4>
+        <ul><li>Facebook</li><li>YouTube</li><li>Instagram</li><li>WhatsApp</li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Discipleship Mission. All rights reserved.</span>
+      <span>Equip Small Churches. Send Them To Grow.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('navtoggle').addEventListener('click',()=>document.getElementById('navlinks').classList.toggle('open'));
+</script>
+</body>
+</html>
